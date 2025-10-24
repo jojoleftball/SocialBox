@@ -13,7 +13,7 @@ Fiuscha="\033[0;35m"
 blue="\033[1;34m"
 nc="\e[0m"
 
-echo -e "$red by soly the great.$nc"
+echo -e "$red by samsesh.$nc"
 
 #Installation
 sleep 1
@@ -40,7 +40,17 @@ echo -e "		$Cyan 4 : Brute Force Twitter Account$nc"
 echo -e "		$Cyan 5 : Brute Force Instagram Account 2 $nc"
 echo -e "		$Cyan 6 : Brute Force Facebook Account 2$nc"
 echo -e "		$Cyan 99: Exit$nc"
-read -r -p "Choice >  " ch
+
+# Loop until valid input is received
+while true; do
+    read -r -p "Choice > " ch
+    echo -e "$yellow Debug: You entered '$ch' $nc"  # Debug to see input
+    if [ -n "$ch" ]; then  # Check if input is not empty
+        break
+    else
+        echo -e "$red Please enter a valid number (1-6 or 99) $nc"
+    fi
+done
 
 if [ "$ch" = 1 ]; then
     echo -e "			$Cyan Facebook Brute Force$nc"
@@ -152,6 +162,7 @@ elif [ "$ch" = 99 ]; then
     sleep 0.25
     exit 1
 else
-    echo "Not Found 404 , Exit"
-    exit 1
+    echo -e "$red Invalid input '$ch'. Please choose 1-6 or 99. $nc"
+    sleep 1
+    bash SocialBox.sh  # Restart script for another try
 fi
